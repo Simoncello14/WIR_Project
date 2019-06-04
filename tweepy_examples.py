@@ -11,9 +11,14 @@ auth.set_access_token(api_keys["access_token_key"], api_keys["access_token_secre
 
 api = tweepy.API(auth)
 
-search = api.search('polpetta', rpp=100, result_type="recent", tweet_mode="extended", count=200)
-print(len(search))
-# print(search[1])
+# search = api.search('polpetta', rpp=100, result_type="recent", tweet_mode="extended", count=200)
+# print(len(search))
+# # print(search[1])
 
-# tweets = api.user_timeline(screen_name="realDonaldTrump",count=200, tweet_mode="extended")
-# print(tweets[1].full_text)
+tweets = api.user_timeline(screen_name="DeBortoliF",count=200, tweet_mode="extended")
+print(len(tweets))
+# print(json.dumps(tweets[1]._json, indent=4))
+# print("\n\n\n")
+# print(json.dumps(tweets[2]._json, indent=4))
+# print("\n\n\n")
+# print(json.dumps(tweets[3]._json, indent=4))

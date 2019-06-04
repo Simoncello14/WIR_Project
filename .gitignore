@@ -1,2 +1,5 @@
 __pycache__/
 api_keys.json
+create_sets.py
+sets2users.py
+domain2users_temps/
