@@ -1,0 +1,6 @@
+users.json -> list containings screen_names of the users
+user2doms.json -> dict containing, for each user, a list of the domains mentioned in his last 200 tweets.
+dom2users.json -> inverse of user2doms.json
+
+#users = 35k with more than 70 domains
+#domains = 43k

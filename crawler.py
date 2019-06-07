@@ -40,8 +40,8 @@ def crawl_users(api, seed_domains: list):
 			out_dom_file.write(users_to_json_array) # will not contain duplicates
 
 # IN: the tweepy.api object from create_api() and a list of screen_names
-# For each input users it downloads its last 200 tweets and extract the mentioned domains from them, 
-# then it will save those domains in a file named after the user in the user2domains/ folder 
+# For each input users it downloads its last 200 tweets and extract the mentioned domains from them,
+# then it will save those domains in a file named after the user in the user2domains/ folder
 def crawl_domains(api, users: list):
 	for user in users:
 		if os.path.isfile('user2domains/'+user+'.json'):
