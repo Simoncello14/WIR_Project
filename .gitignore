@@ -8,3 +8,5 @@ domain2users_temps/
 user2domains/*.json
 precomputation.py
 dataset/*/*.json
+.vscode/
+.DS_Store
