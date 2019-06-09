@@ -1,0 +1,4 @@
+seed_domains.json -> list of 42 domains
+users.json -> original list of 956k user screen_names
+
+folder x_min_y: contains reduced datasets of x users with more than y domains
