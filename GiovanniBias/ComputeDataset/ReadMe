@@ -1,0 +1,7 @@
+dataset.json contain a dictionary
+key is username, item a list of domain shared by username
+
+for each seed (42) extract 50 users
+total of users 2100
+
+problem: 1750 users instead of 2100, i don't know why

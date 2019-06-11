@@ -1,0 +1,5 @@
+dataset.json contain a dictionary
+key is domain picked, item bias (not normalized)
+
+closestDomain.json contain a dictionary
+key is domain picked, item closest domain in the seed
