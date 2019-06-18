@@ -13,7 +13,6 @@ def compute_and_normalize_domains_partisianship(user2domains:dict) -> dict:
 
 	for user, u_domains in user2domains.items():
 		users += user
-		#print("DAJE")
 		user2domscouples[user] = list(combinations(u_domains, 2)) #takes all possible couples of domains shared by the actual user
 
 	partisianship = 0
