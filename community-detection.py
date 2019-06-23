@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 def createGraph(user2partisianship:dict, user2domains:dict, dom2bias:dict) -> nx.Graph:
 	graph = nx.Graph() #graph creation - empty graph
 
-	usersSub = list(user2partisianship.items())[:20] 
+	usersSub = list(user2partisianship.items())
 
 	for user, partisianship in usersSub:  #Per il momento non ho considerato la partisianship perché sembra che l'algoritmo della libreria louvain non la utilizzi
 		graph.add_node(user)
