@@ -1,0 +1,2 @@
+partitions.json: dict user->partition
+inv_partitions.json dict partition->[user1, user2, ...]
