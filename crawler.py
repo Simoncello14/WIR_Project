@@ -63,12 +63,28 @@ def crawl_domains(api, users: list):
 				print("[{}][crawl_domains]: got an error, probably a private profile".format(dt_now()))
 			user_doms_file.write(json.dumps(list(user_doms)))
 
+def crawl_tweets(api, users: list, partition: str):
+	for user in users:
+		file_path = 'dataset/tweets/'+partition+'/'+user+'.json'
+		if os.path.isfile(file_path):
+			print("[{}][crawl_tweets]: skipping user '{}'".format(dt_now(), user))
+			continue
+		print("[{}][crawl_tweets]: crawling from user '{}'".format(dt_now(), user))
+		user_tweets = []
+		try:
+			# I only take the last 200
+			tweets = api.user_timeline(screen_name=user, count=200, tweet_mode="extended")
+			for t in tweets:
+				user_tweets.append(t.full_text)
+			print("[{}][crawl_domains]: got {} tweets".format(dt_now(), len(user_tweets)))
+		except tweepy.TweepError:
+			print("[{}][crawl_domains]: got an error, probably a private profile".format(dt_now()))
+
+		with open(file_path, 'w') as f:
+			f.write(json.dumps(user_tweets))
 
 if __name__ == '__main__':
 	dt_now = datetime.datetime.now # I use this for the logs
-
-	# with open('seed_domains.json', 'r') as seed_domains_file:
-	# 	seed_domains = json.loads(seed_domains_file.read())
 
 	# You can pass the path of the file containing the keys as an argument,
 	# otherwise it'll default to "api_keys.json"
@@ -81,12 +97,20 @@ if __name__ == '__main__':
 	api = create_api(api_keys)
 	print("Autheticated: ", api.me().name)
 
+	with open('dataset/5k_from_295k/inv_partitions.json', 'r') as f:
+		part2users = json.loads(f.read())
+	
+	crawl_tweets(api, part2users['0'], 'partition_0')
+
+	# with open('seed_domains.json', 'r') as seed_domains_file:
+	# 	seed_domains = json.loads(seed_domains_file.read())
+
 	# print("[{}] Crawling users...".format(dt_now()))
 	# users = crawl_users(api, seed_domains)
 	# print("[{}] Got {} users...".format(dt_now(), len(users)))
 
-	with open('users.json', 'r') as users_file:
-		users = json.loads(users_file.read())
+	# with open('users.json', 'r') as users_file:
+	# 	users = json.loads(users_file.read())
 
-	print("[{}] Crawling domains...".format(dt_now()))
-	crawl_domains(api, users)
+	# print("[{}] Crawling domains...".format(dt_now()))
+	# crawl_domains(api, users)
